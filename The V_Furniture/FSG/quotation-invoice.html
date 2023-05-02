@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generated Invoice</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+</head>
+<body>
+<!--    <a> you are viewing items from order id <span id="ben"></span> </a>-->
+<!--    <br>-->
+<!--    <a> you are viewing invoice data <span id="ben2"></span> </a>-->
+<div class="row" style="top: 58px;position: relative;">
+<!--    <input id="print" type="button" value="Print this page" style="position: absolute;left: 42%;top: 5%;border-radius: 6px;background-color: orangered;"/>-->
+<!--    <input id="confirm" type="button" value="Confirm this order" style="position: absolute;left: 49%;top: 5%;border-radius: 6px;background-color: #28a745;"/>-->
+    <div class="col-12" style="text-align: center;">
+        <span id="print" onmouseenter="m_p_enter()" onmouseleave="m_p_leave()"><img src="assets/images/Buttons/button_print.png"></span>
+<!--        <span id="confirm" onmouseenter="m_c_enter()" onmouseleave="m_c_leave()"><img src="assets/images/Buttons/button_order_confirm.png"></span>-->
+        <span class="confirm_dialog_open" data-id="" onmouseenter="m_c_enter()" onmouseleave="m_c_leave()" data-toggle="modal" data-target="#exampleModal" type=""><img src="assets/images/Buttons/button_order_confirm.png"></span>
+    </div>
+
+</div>
+
+    <div class="container-fluid" style="padding: 7% 11% 0% 11%;">
+        <div class="row">
+            <div class="col-4">
+                <span>
+                    <strong id="bis_cust_name">COMMUNE LIFESTYLE PTE LTD</strong>
+                </span>
+                <br>
+                <span id="bis_cust_addr">
+                    N0.28 DEFU LANE 4 DEFU INDUSTRIAL
+                </span>
+                <br>
+                <span id="bis_cust_city">
+                    Singapore
+                </span>
+                <span id="bis_cust_postal">
+                    539424
+                </span>
+                <br>
+                <span id="bis_cust_attn">
+                    Attn: CHRISTINIA ONG
+                </span>
+                <br>
+                <span id="bis_cust_phone">
+                    Phone: +65 6282 9882
+                </span>
+            </div>
+            <div class="col-4">
+            </div>
+            <div class="col-4">
+                <span id="bis_cust_quotation">
+                    <strong style="font-size: 28px;">Quotation</strong>
+                </span>
+                <br>
+                <span>
+                    <strong>No:</strong>
+                    <span id="quot_no"></span>
+                </span>
+                <br>
+                <span id="bis_cust_order">
+                    <strong style="font-size: 28px;">Order</strong>
+                </span>
+                <br>
+                <span>
+                    <strong>No:</strong>
+                    <span id="order_no"></span>
+                </span>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-4">
+                <span id="bill_to">
+                    Bill To:
+                </span>
+                <br>
+                <span>
+                    <strong style="font-size: 24px;"><span id="walkIn_bill"></span></strong>
+                </span>
+                <br>
+                <span id="cust_bill_addr">
+                    NO 10 Admiralty Street, #04-15 North Link Bldg
+                </span>
+                <br>
+                <span id="bill_city">
+                    Singapore
+                </span>
+                <span id="bill_postal">
+                    757695
+                </span>
+                <span id="bill_country">
+                    Singapore
+                </span>
+                <br>
+                <span id="bill_Phone">
+                    Phone: <span id="bill_phone_placeholder">65 6364 9088</span>
+                </span>
+            </div>
+            <div class="col-4">
+                <span id="del_to">
+                    Deliver To:
+                </span>
+                <br>
+                <span>
+                    <strong style="font-size: 24px;"><span id="walkIn_del"></span></strong>
+                </span>
+                <br>
+                <span id="cust_del_addr">
+                    NO 10 Admiralty Street, #04-15 North Link Bldg
+                </span>
+                <br>
+                <span id="del_city">
+                    Singapore
+                </span>
+                <span id="del_postal">
+                    757695
+                </span>
+                <span id="del_country">
+                    Singapore
+                </span>
+                <br>
+                <span id="del_Phone">
+                    Phone: <span id="del_phone_placeholder">65 6364 9088</span>
+                </span>
+            </div>
+            <div class="col-4">
+                <span>Date: <span id="issue_date">22-February-2022</span></span>
+                <br>
+                <span>Project Name: <span id="proj_name">Sample Project</span></span>
+                <br>
+                <span>Enquiry Number: <span id="enq_no">IQ6643883</span></span>
+                <br>
+                <span>Salesperson: <span id="sales_person">Sample Salesperson</span></span>
+                <br>
+                <span>Currency: <span id="Currency">SGD</span></span>
+                <br>
+            </div>
+        </div>
+        <br>
+        <div id="table">
+            <div class="row" style="background-color: darkgrey;border-top: 2px solid black;border-bottom: 2px solid black;">
+                <div class="col-1"><strong>No</strong></div>
+                <div class="col-4"><strong>Description</strong></div>
+                <div class="col-3"><strong>Quantity</strong></div>
+                <div class="col-2"><strong>Unit Rate</strong></div>
+                <div class="col-2"><strong>Amount</strong></div>
+            </div>
+            <div id="tbl_append">
+<!--                <div class="row" style="background-color: white;">-->
+<!--                    <div class="col-1"><strong>1</strong></div>-->
+<!--                    <div class="col-4"><strong>ZAC002REG: </strong></div>-->
+<!--                    <div class="col-3"><strong>1.00</strong></div>-->
+<!--                    <div class="col-2"><strong>50.00</strong></div>-->
+<!--                    <div class="col-2"><strong>50.00</strong></div>-->
+<!--                </div>-->
+<!--                <div class="row" style="border-bottom: 2px solid black;background-color: white;">-->
+<!--                    <div class="col-1"><strong>2</strong></div>-->
+<!--                    <div class="col-4"><strong>ZF904RR09: </strong></div>-->
+<!--                    <div class="col-3"><strong>1.00</strong></div>-->
+<!--                    <div class="col-2"><strong>33.00</strong></div>-->
+<!--                    <div class="col-2"><strong>33.00</strong></div>-->
+<!--                </div>-->
+            </div>
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4"></div>
+                <div class="col-4" style="border: 2px solid black;">
+                    <div class="row">
+                        <div class="col-7">Total</div>
+                        <div class="col-5" id="total">83.00</div>
+                    </div>
+<!--                    <div class="row">-->
+<!--                        <div class="col-7">GST @ 7.00%</div>-->
+<!--                        <div class="col-5" id="gst">5.81</div>-->
+<!--                    </div>-->
+                    <div class="row">
+                        <div class="col-7"></div>
+                        <div class="col-5"></div>
+                    </div>
+<!--                    <div class="row">-->
+<!--                        <div class="col-7">Total</div>-->
+<!--                        <div class="col-5" id="tot_after_gst">88.81</div>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--order confirm modal-->
+    <div id="modal-open">
+        <div class="modal fade" role="dialog" tabindex="-1" id="exampleModal" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Are you sure that you want to confirm this order?</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12 col-lg-8 offset-lg-2" style="text-align: center;">
+                            <button class="btn btn-danger comfirm_noDelete" style="border: none;width: 105px;height: 58px;margin-left: 14px;background-color: #3abaa1;color: rgb(255,255,255);margin-top: 12px;float: left;" type="button">No</button>
+                            <button class="btn btn-danger quo_delete" id="confirm" data-id="" style="border: none;width: 105px;height: 58px;margin-left: 0;background-color: #d23350;color: rgb(255,255,255);margin-top: 12px;float: right;" type="button">Yes</button></div>
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--order confirm modal-->
+
+    <script src="assets/js/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script>
+        var serverChkOut;
+        var orderId;
+        var orderIdUpdate;
+        var serverSingleProdInOrder=[];
+        $(function (){
+            $.ajax({
+                url: "quotation.php",
+                data: {
+                    requestType: "get_session_id"
+                },
+                type: "post",
+                headers: {
+                    // "content-type": "application/json"
+                },
+                beforeSend: function () {
+                    console.log("Waiting...");
+                },
+                error: function () {
+                    console.log("Server-sided error!");
+                },
+                success: function (sts) {
+                    console.log(sts);
+                    // $('#ben').html(sts);
+                    //--------------------
+                    $.ajax({
+                        url: "quotation.php",
+                        data: {
+                            requestType: "get_invoice_data",
+                            invId: sts
+                        },
+                        type: "post",
+                        headers: {
+                            // "content-type": "application/json"
+                        },
+                        beforeSend: function () {
+                            console.log("Waiting...");
+                        },
+                        error: function () {
+                            console.log("Server-sided error!");
+                        },
+                        success: function (inv_data) {
+                            var formatted_inv_data= JSON.parse(inv_data);
+                            serverChkOut = formatted_inv_data;
+                            orderId = formatted_inv_data[0].orderId;
+                            console.log(formatted_inv_data);
+                            if (orderId != null){
+                                $('.confirm_dialog_open').hide();
+                                $('#order_no').text(orderId);
+                            }
+
+                            $('#bis_cust_name').text(formatted_inv_data[0].dealerName);
+                            $('#walkIn_bill').text(formatted_inv_data[0].customerName);
+                            $('#cust_bill_addr').text(JSON.parse(formatted_inv_data[0].quoteData)[3].cust_addr);
+                            $('#bill_city').text(JSON.parse(formatted_inv_data[0].quoteData)[3].cust_city);
+                            $('#bill_postal').text(JSON.parse(formatted_inv_data[0].quoteData)[3].cust_postal);
+                            $('#bill_country').text(JSON.parse(formatted_inv_data[0].quoteData)[3].cust_country);
+                            $('#bill_phone_placeholder').text(JSON.parse(formatted_inv_data[0].quoteData)[3].cust_phone);
+                            $('#walkIn_del').text(JSON.parse(formatted_inv_data[0].quoteData)[4].cust_name);
+                            $('#cust_del_addr').text(JSON.parse(formatted_inv_data[0].quoteData)[4].cust_addr);
+                            $('#del_city').text(JSON.parse(formatted_inv_data[0].quoteData)[4].cust_city);
+                            $('#del_postal').text(JSON.parse(formatted_inv_data[0].quoteData)[4].cust_postal);
+                            $('#del_country').text(JSON.parse(formatted_inv_data[0].quoteData)[4].cust_country);
+                            $('#del_phone_placeholder').text(JSON.parse(formatted_inv_data[0].quoteData)[4].cust_phone);
+                            $('#quot_no').text(formatted_inv_data[0].quotationId);
+                            $('#total').text(JSON.parse(formatted_inv_data[0].quoteData)[1].slice((formatted_inv_data[0].quoteData)[1].indexOf('total:')+7));
+
+                            // $('#gst').text((JSON.parse(formatted_inv_data[0].quoteData)[1].slice((formatted_inv_data[0].quoteData)[1].indexOf('total:')+7))*(7.00)/100);
+                            // $('#tot_after_gst').text(parseFloat($('#total').text())-parseFloat($('#gst').text()));
+
+                            for (var i=0;i<(JSON.parse(formatted_inv_data[0].quoteData)[0]).length;i++){
+                                // console.log(JSON.parse(formatted_inv_data[0].quoteData));
+                                if ((JSON.parse(formatted_inv_data[0].quoteData)[0]).length - i ==1){
+                                    $('#tbl_append').append('<div class="row" style="border-bottom: 2px solid black;background-color: white;">\n' +
+                                        '                    <div class="col-1"><strong>'+(i+1)+'</strong></div>\n' +
+                                        '                    <div class="col-4"><strong>'+(JSON.parse(formatted_inv_data[0].quoteData)[0])[i].prodName+'</strong></div>\n' +
+                                        '                    <div class="col-3"><strong>'+(JSON.parse(formatted_inv_data[0].quoteData)[0])[i].quantity+'</strong></div>\n' +
+                                        '                    <div class="col-2"><strong>'+(JSON.parse(formatted_inv_data[0].quoteData)[0])[i].price+'</strong></div>\n' +
+                                        '                    <div class="col-2"><strong>'+(JSON.parse(formatted_inv_data[0].quoteData)[0])[i].subTotal+'</strong></div>\n' +
+                                        '                </div>\n');
+                                }else{
+                                    $('#tbl_append').append('<div class="row" style="background-color: white;">\n' +
+                                        '                    <div class="col-1"><strong>'+(i+1)+'</strong></div>\n' +
+                                        '                    <div class="col-4"><strong>'+(JSON.parse(formatted_inv_data[0].quoteData)[0])[i].prodName+'</strong></div>\n' +
+                                        '                    <div class="col-3"><strong>'+(JSON.parse(formatted_inv_data[0].quoteData)[0])[i].quantity+'</strong></div>\n' +
+                                        '                    <div class="col-2"><strong>'+(JSON.parse(formatted_inv_data[0].quoteData)[0])[i].price+'</strong></div>\n' +
+                                        '                    <div class="col-2"><strong>'+(JSON.parse(formatted_inv_data[0].quoteData)[0])[i].subTotal+'</strong></div>\n' +
+                                        '                </div>\n');
+                                }
+                            }
+                        }
+                    })
+
+                    //--------------------
+                }
+            })
+
+            $('.confirm_dialog_open').on('click',function (){
+                // $('#confirm').attr('data-id',$('#quot_no').text());
+                orderIdUpdate = $('#quot_no').text();
+            });
+
+            $('#print').on('click', function (){
+                $('#print').hide();
+                $('.confirm_dialog_open').hide();
+                window.print();
+                setTimeout(function (){
+                    $('#print').show();
+                    $('.confirm_dialog_open').show();
+                },2000)
+            });
+
+            $('#confirm').on('click', function(){
+                if (orderId == null){
+                    var dataFormatted = (JSON.parse(serverChkOut[0].quoteData)[0]);
+                    var quoId = (JSON.parse(serverChkOut[0].quotationId));
+                    var allProdFormatted;
+                    var total=0;
+
+                    // total = JSON.parse(serverChkOut[0].quoteData)[1];
+
+                    // serverside data prepare
+                    for (var i=0; i<dataFormatted.length;i++){
+                        // console.log("this is first item: "+JSON.stringify(dataFormatted[i]));
+                        var dt = JSON.parse(`{"prodCode":"`+dataFormatted[i].prodCode+`","prodName":"`+dataFormatted[i].prodName+`","img":"`+dataFormatted[i].img+`","curr":"`+dataFormatted[i].curr+`","price":"`+dataFormatted[i].realrate+`","quantity":"`+dataFormatted[i].quantity+`","subTotal":"`+((dataFormatted[i].realrate)*(dataFormatted[i].quantity)).toFixed(3)+`"}`);
+                        serverSingleProdInOrder.push(dt);
+
+                        total += ((dataFormatted[i].realrate)*(dataFormatted[i].quantity));
+                    }
+                    // console.log("this is total item array: "+JSON.stringify(serverSingleProdInOrder));
+                    for (var i=0;i<serverSingleProdInOrder.length;i++){
+                        if (allProdFormatted == "" || allProdFormatted == null || allProdFormatted == undefined){
+                            allProdFormatted = JSON.stringify(serverSingleProdInOrder[i])+"|";
+                        }else{
+                            if (serverSingleProdInOrder.length - i == 1){
+                                allProdFormatted += JSON.stringify(serverSingleProdInOrder[i]);
+                            }else{
+                                allProdFormatted += JSON.stringify(serverSingleProdInOrder[i])+"|";
+                            }
+                        }
+                    }
+                    console.log("this is final formatted data: "+allProdFormatted);
+                    console.log("this is final total: "+total);
+
+
+                    // serverside data prepare
+
+                    var chkOutPostData = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
+                        "<!-- SOAPAction: \"allitemrcv\" -->\n" +
+                        "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
+                        "<License xmlns=\"http://thev.dreamapps.com/da/ws\"/>\n" +
+                        "  <soap:Body>\n" +
+                        "    <ItemDetail SessionID=\"160F30EB45CFBEEDC5B30AC47C16C747\">\n" +
+                        "      <CusId>"+serverChkOut[0].dealerName+"</CusId>\n" +
+                        "      <itemAll>"+allProdFormatted+"</itemAll>\n" +
+                        "      <Total>"+total+"</Total>\n" +
+                        "      <quoNo>'"+quoId+"'</quoNo>\n" +
+                        "    </ItemDetail>\n" +
+                        "  </soap:Body>\n" +
+                        "</soap:Envelope>";
+
+                    // // this is test print
+                    // console.log("this is formatted data before send: "+allProdFormatted);
+                    // console.log("this is quot id: "+quoId);
+                    // console.log("this is total: "+ total.slice(total.indexOf('total:')+7));
+                    // console.log("this is the customer: "+serverChkOut[0].dealerName);
+                    // // this is test print
+
+
+                    $.ajax({
+                        url: "http://thev.dreamapps.com/da/ws",
+                        // url: "http://122.152.53.18:2080/da/ws",
+                        data: chkOutPostData,
+                        type: "post",
+                        headers: {
+                            "content-type": "application/xml"
+                        },
+                        beforeSend: function (){
+                            console.log("Waiting...");
+                        },
+                        error: function() {
+                            console.log("Server-sided error!");
+                        },
+                        success: function (dataChkOut) {
+                            console.log(JSON.parse(dataChkOut).trnno);
+                            console.log($(this).data('id'));
+                            if (JSON.parse(dataChkOut).status == "SUCCESS"){
+                                console.log("success!");
+                                $.ajax({
+                                    url: "quotation.php",
+                                    data: {
+                                        requestType: "confirm_order",
+                                        id: orderIdUpdate,
+                                        orderedId: (JSON.parse(dataChkOut).trnno)
+                                    },
+                                    type: "post",
+                                    headers: {
+                                        // "content-type": "application/json"
+                                    },
+                                    beforeSend: function () {
+                                        console.log("Waiting...");
+                                    },
+                                    error: function () {
+                                        console.log("Server-sided error!");
+                                    },
+                                    success: function (orderSts) {
+                                        console.log(orderSts);
+                                        location.reload();
+                                    }
+                                })
+
+                            }else{
+                                console.log("Server could not save data!");
+                            }
+
+                        }
+                        // sending checkout list to server to process checkout
+                        // console.log(total);
+                    });
+                }else{
+                    console.log("order has already confirmed!");
+                    $('.confirm_dialog_open').hide();
+                }
+            });
+
+
+        });
+        function m_p_enter(){
+            $('#print > img').attr('src','assets/images/Buttons/button_print_clicked.png');
+        }
+        function m_p_leave(){
+            $('#print > img').attr('src','assets/images/Buttons/button_print.png');
+        }
+        function m_c_enter(){
+            $('.confirm_dialog_open > img').attr('src','assets/images/Buttons/button_order_confirm_clicked.png');
+        }
+        function m_c_leave(){
+            $('.confirm_dialog_open > img').attr('src','assets/images/Buttons/button_order_confirm.png');
+        }
+        $('.comfirm_noDelete').on('click',function (){
+            $('#exampleModal').modal('hide');
+        });
+    </script>
+</body>
+</html>

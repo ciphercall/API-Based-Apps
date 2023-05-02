@@ -1,0 +1,2 @@
+[12-Mar-2022 12:00:46 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home4/thevfure/public_html/quotation.php on line 57
+[12-Mar-2022 12:00:51 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home4/thevfure/public_html/quotation.php on line 57
